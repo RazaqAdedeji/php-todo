@@ -65,25 +65,32 @@ stage('Plot Code Coverage Report') {
 
     }
 
-    stage ('Upload Artifact to Artifactory') {
-          steps {
-            script { 
-                 def server = Artifactory.server 'artifactory-server'                 
-                 def uploadSpec = """{
-                    "files": [
-                      {
-                       "pattern": "php-todo.zip",
-                       "target": "proj14/php-todo",
-                       "props": "type=zip;status=ready"
+    stage ('Deploy Artifact') {
+    steps {
+            sh ' curl -uadmin:Password23! -T php-todo.zip "http://18.220.245.115:8081/artifactory/proj14/"'
 
-                       }
-                    ]
-                 }""" 
+    }
 
-                 server.upload spec: uploadSpec
-               }
-            }
+
+    // stage ('Upload Artifact to Artifactory') {
+    //       steps {
+    //         script { 
+    //              def server = Artifactory.server 'artifactory-server'                 
+    //              def uploadSpec = """{
+    //                 "files": [
+    //                   {
+    //                    "pattern": "php-todo.zip",
+    //                    "target": "proj14/php-todo",
+    //                    "props": "type=zip;status=ready"
+
+    //                    }
+    //                 ]
+    //              }""" 
+
+    //              server.upload spec: uploadSpec
+    //            }
+    //         }
   
-        }
+    //     }
 }
 }
