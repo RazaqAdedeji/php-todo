@@ -82,7 +82,7 @@ stage('Plot Code Coverage Report') {
 
     stage ('Deploy Artifact') {
     steps {
-            sh ' curl -uadmin:Password23! -T php-todo.zip "http://18.221.139.159:8082/artifactory/proj14/"'
+            sh ' curl -uadmin:Password23! -T php-todo.zip "http://3.145.119.252:8082/artifactory/proj14/"'
 
     }
 
